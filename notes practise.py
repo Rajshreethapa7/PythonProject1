@@ -23,6 +23,7 @@ print(fruits)
 
 ## print function (ways of print function can be used
 
+
 x= "python"
 y = "is"
 z = "awesome"

@@ -3,8 +3,9 @@
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
-list = [1,2,3,4,5,6,7,8,9,10]
+#skip a iteration ,or i mean like skip a number we can use for loop
 
-sum = 6
-output =  sum_of_2_num_equals_to_target(list, sum)
-print(output)
+for x in range(3):
+    print(x)
+
+
