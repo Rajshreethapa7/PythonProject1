@@ -1,11 +1,30 @@
-# This is a sample Python script.
+from pyspark import SparkContext
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+sc = SparkContext("local", "CustomerDataCleaning")
 
-#skip a iteration ,or i mean like skip a number we can use for loop
+data = [
+    ("Smith",23,5.3),
+    ("Rashmi",27,5.8),
+    ("Smith",23,5.3),
+    ("Payal",27,5.8),
+    ("Megha",27,5.4)
+]
 
-for x in range(3):
-    print(x)
+# create RDD
+rdd = sc.parallelize(data)
 
+# remove exact duplicates
+rdd1 = rdd.distinct()
 
+# key by age and height
+rdd2 = rdd1.map(lambda x: ((x[1], x[2]), x))
+
+# remove duplicates by age,height
+rdd3 = rdd2.reduceByKey(lambda a,b: a)
+
+# result
+result = rdd3.map(lambda x: x[1])
+
+print(result.collect())
+
+sc.stop()
